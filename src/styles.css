@@ -1,0 +1,59 @@
+body {
+  padding: 20px;
+  background: no-repeat url("./assets/blue-clouds-day-fluffy-53594.jpeg");
+  height: 100vh;
+}
+
+main {
+  display: grid;
+  height: 100%;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+header {
+  display: flex;
+  justify-content: end;
+}
+
+.error {
+  width: 100%;
+  padding: 0;
+  display: none;
+  font-size: 80%;
+  color: red;
+  font-weight: bold;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3rem;
+}
+
+#output {
+  width: 50%;
+  justify-self: center;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.temperature-value {
+  font-size: 60px;
+}
+
+.temperature-unit {
+  display: inline-block;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.weather-details {
+  border-left: 2px solid white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
