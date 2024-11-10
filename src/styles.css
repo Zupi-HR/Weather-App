@@ -1,5 +1,4 @@
 body {
-  padding: 20px;
   background: no-repeat url("./assets/blue-clouds-day-fluffy-53594.jpeg");
   height: 100vh;
 }
@@ -12,13 +11,40 @@ main {
 
 header {
   display: flex;
-  justify-content: end;
+  background-color: rgb(40, 40, 40);
+  align-items: center;
+  height: 100px;
+  gap: 50px;
+  justify-content: center;
+}
+
+.input-container {
+  display: flex;
+}
+
+input {
+  width: 400px;
+}
+
+#btn-submit {
+  height: 30px;
+  background-color: rgb(224, 155, 27);
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  outline: none;
+  width: 100px;
+}
+
+.temp-btn {
+  padding: 5px 50px;
+  font-size: 16px;
 }
 
 .error {
+  display: block;
   width: 100%;
   padding: 0;
-  display: none;
+  visibility: hidden;
   font-size: 80%;
   color: red;
   font-weight: bold;
@@ -34,12 +60,28 @@ header {
 #output {
   width: 50%;
   justify-self: center;
+  margin: auto;
+}
+
+.currentUnit {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .weather-info {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.condition-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-icon {
+  width: 60px;
 }
 
 .temperature-value {
