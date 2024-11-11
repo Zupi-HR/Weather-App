@@ -21,15 +21,6 @@ class WeatherService {
     }
   }
 
-  async fetchWeatherIcon({ currentCondition }) {
-    const response = await fetch(
-      `https://api.giphy.com/v1/gifs/translate?api_key=Jom9O0Rk4C284NMIIj5ArPEWC5M3Ms8p&s=${currentCondition}-weather-icon`,
-    );
-    console.log(response);
-    const JSONdata = await response.json();
-    return JSONdata;
-  }
-
   processData(data) {
     return {
       location: data.resolvedAddress,

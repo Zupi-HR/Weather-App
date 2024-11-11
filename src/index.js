@@ -1,28 +1,39 @@
 import "./normalizer.css";
 import "./styles.css";
 
+import { weatherService } from "./ApplicationLogic";
 import { weatherUI } from "./DOMHandler";
-const form = document.querySelector("form");
-const tempBTN = document.querySelector(".temp-btn");
-const celsius = document.querySelector(".celsius");
-const fahrenheit = document.querySelector(".fahrenheit");
-let currentUnit = "metric";
 
 class Init {
+  form = document.querySelector("form");
+  tempBTN = document.querySelector(".temp-btn");
+  celsius = document.querySelector(".celsius");
+  fahrenheit = document.querySelector(".fahrenheit");
+  currentUnit = "metric";
   constructor() {
-    tempBTN.addEventListener("click", this.changeCurrentUnit);
+    this.tempBTN.addEventListener("click", this.changeCurrentUnit.bind(this));
 
-    form.addEventListener("submit", (e) => {
+    this.form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      weatherUI.handleFormSubmit(currentUnit);
+      weatherUI.handleFormSubmit(this.currentUnit);
     });
   }
 
   changeCurrentUnit() {
-    celsius.classList.toggle("currentUnit");
-    fahrenheit.classList.toggle("currentUnit");
-    currentUnit = celsius.classList.contains("currentUnit") ? "metric" : "us";
+    this.celsius.classList.toggle("currentUnit");
+    this.fahrenheit.classList.toggle("currentUnit");
+    this.currentUnit = this.celsius.classList.contains("currentUnit")
+      ? "metric"
+      : "us";
+
+    if (document.contains(document.querySelector(".location-name"))) {
+      const currentLocation =
+        document.querySelector(".location-name").textContent;
+      weatherService
+        .fetchData(currentLocation, this.currentUnit)
+        .then((data) => weatherUI.renderWeatherData(data, this.currentUnit));
+    }
   }
 }
 
